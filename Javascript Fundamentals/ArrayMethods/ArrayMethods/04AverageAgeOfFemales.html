@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>04.Average Age Of Females</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function Person(firstname, lastname, age, gender) {
+            return {
+                firstname: firstname,
+                lastname: lastname,
+                age: age,
+                gender: gender,
+                toString: function () {
+                    return this.firstname + ', ' + this.lastname + ', ' + this.age + ', ' + this.gender;
+                }
+            }
+        }
+
+        var persons = [
+            new Person('Ivan', 'Ivanov', 17, 'male'),
+            new Person('Ivan1', 'Ivanov1', 19, 'male'),
+            new Person('Mariq', 'Petrova', 18, 'female'),
+            new Person('Ivan2', 'Ivanov2', 20, 'male'),
+            new Person('Mariq1', 'Petrova1', 26, 'female'),
+            new Person('Ivan5', 'Ivanov5', 22, 'male'),
+            new Person('Mariq2', 'Petrova2', 35, 'female'),
+            new Person('Ivan3', 'Ivanov3', 27, 'male'),
+            new Person('Ivan4', 'Ivanov4', 37, 'male'),
+            new Person('Mariq3', 'Petrova3', 25, 'female'),
+        ];
+
+        var women = persons.filter(function (item) {
+            if (item.gender == 'female') {
+                return item.age;
+            }
+        });
+
+        var sumAge = women.reduce(function (sumAge, person) {
+            return sumAge + person.age;
+        }, 0);
+
+        jsConsole.writeLine('The average age of females is ' + (sumAge / women.length));
+    </script>
+</body>
+</html>

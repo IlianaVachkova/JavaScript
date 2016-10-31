@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>05.Youngest Person</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function Person(firstname, lastname, age, gender) {
+            return {
+                firstname: firstname,
+                lastname: lastname,
+                age: age,
+                gender: gender,
+                toString: function () {
+                    return this.firstname + ', ' + this.lastname + ', ' + this.age + ', ' + this.gender;
+                }
+            }
+        }
+
+        var persons = [
+            new Person('Ivan', 'Ivanov', 17, 'male'),
+            new Person('Ivan1', 'Ivanov1', 19, 'male'),
+            new Person('Mariq', 'Petrova', 18, 'female'),
+            new Person('Ivan2', 'Ivanov2', 20, 'male'),
+            new Person('Mariq1', 'Petrova1', 26, 'female'),
+            new Person('Ivan5', 'Ivanov5', 22, 'male'),
+            new Person('Mariq2', 'Petrova2', 35, 'female'),
+            new Person('Ivan3', 'Ivanov3', 27, 'male'),
+            new Person('Ivan4', 'Ivanov4', 37, 'male'),
+            new Person('Mariq3', 'Petrova3', 25, 'female'),
+        ];
+
+        persons.sort(function (first, second) {
+            return first.age - second.age;
+        });
+
+        if (!Array.prototype.find) {
+            Array.prototype.find = function (callback) {
+                var i, len = this.length;
+                for (i = 0; i < len; i += 1) {
+                    if (callback(this[i], i, this)) {
+                        return this[i];
+                    }
+                }
+            }
+        }
+
+        var youngestPerson = persons.find(function (item) {
+            if (item !== undefined) {
+                return item;
+            }
+        });
+
+        jsConsole.writeLine('The youngest person is: ' + youngestPerson);
+    </script>
+</body>
+</html>
