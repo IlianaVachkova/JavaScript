@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>02.Lexicographically Comparison</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        var charArr1 = ['d', 'b', 'e', 'g', 'a', 'c', 'g', 'q'];
+        var charArr2 = ['d', 'b', 'e', 'g', 'a', 'c', 'g'];
+        var minLen = Math.min(charArr1.length, charArr2.length);
+        var count = 0;
+
+        for (var i = 0; i < minLen; i++) {
+            if (charArr1[i] < charArr2[i]) {
+                jsConsole.writeLine('CharArray1 is first');
+                count++;
+                break;
+            }
+            else if (charArr1[i] > charArr2[i]) {
+                jsConsole.writeLine('CharArray2 is first');
+                count++;
+                break;
+            }
+        }
+
+        if (count == 0) {
+            if (charArr1.length < charArr2.length) {
+                jsConsole.writeLine('CharArray1 is first');
+            }
+            else if (charArr1.length > charArr2.length) {
+                jsConsole.writeLine('CharArray2 is first');
+            }
+            else {
+                jsConsole.writeLine('Arrays are equal');
+            }
+        }
+    </script>
+</body>
+</html>

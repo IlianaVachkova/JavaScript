@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>05.Selection Sort</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        var array = [3, 4, 5, 2, 1, -3, 20, 4, 9, 8, 0];
+        var length = array.length;
+
+        for (var i = 0; i < length - 1; i++) {
+            var min = array[i];
+            var minIndex = i;
+
+            for (var j = i + 1; j < length; j++) {
+                if (array[j] < min) {
+                    min = array[j];
+                    minIndex = j;
+                }
+            }
+
+            array[minIndex] = array[i];
+            array[i] = min;
+        }
+
+        jsConsole.writeLine(array.join(', '));
+    </script>
+</body>
+</html>
