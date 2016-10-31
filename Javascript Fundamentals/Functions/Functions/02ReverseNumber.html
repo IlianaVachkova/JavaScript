@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>02.Reversed Number</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function revNumber(number) {
+            var numberStr = number.toString();
+            var length = numberStr.length;
+            var reversedNumber = numberStr[0];
+
+            for (var i = 1; i < length; i++) {
+                reversedNumber = numberStr[i] + reversedNumber;
+            }
+
+            jsConsole.writeLine(reversedNumber);
+        }
+
+        revNumber(12.7087);
+    </script>
+</body>
+</html>

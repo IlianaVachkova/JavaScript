@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>06.Larger Than Neighbours</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function neighboursCheck(position, array) {
+            function checkNeighboursExistence() {
+                if (position - 1 >= 0 && position + 1 < array.length) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
+            if (checkNeighboursExistence()) {
+                if (array[position] > array[position - 1] && array[position] > array[position + 1]) {
+                    return 'The number ' + array[position] + ' at position ' + position + ' is bigger than its neighbours!';
+                }
+                else {
+                    return 'The number ' + array[position] + ' at position ' + position + ' is NOT bigger than its neighbours!';
+                }
+            }
+            else {
+                return 'Neighbours out of range!';
+            }
+        }
+
+        var array = [2, 2, 4, 6, 6, 8];
+        var position = 2;
+
+        jsConsole.writeLine(array);
+        jsConsole.writeLine(neighboursCheck(position, array));
+    </script>
+</body>
+</html>

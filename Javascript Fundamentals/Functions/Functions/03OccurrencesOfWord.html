@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>03.Occurrences Of Word</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function wordOccurrences(text, word, casesensitive) {
+            if (arguments.length === 3 && casesensitive === false) {
+                text = text.toLowerCase();
+                word = word.toLowerCase();
+            }
+
+            var splited = text.split(/[,. ]/);
+            var count = 0;
+
+            for (var i in splited) {
+                if (splited[i] === word) {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        var text = 'This is a sample text. This is a Text.';
+        var word = 'text';
+
+        var result = wordOccurrences(text, word, false);
+        jsConsole.writeLine('The word ' + '<strong>' + word + '</strong>' + ' occurred ' + result + ' times');
+
+        var result = wordOccurrences(text, word);
+        jsConsole.writeLine('The word ' + '<strong>' + word + '</strong>' + ' occurred ' + result + ' times');
+    </script>
+</body>
+</html>

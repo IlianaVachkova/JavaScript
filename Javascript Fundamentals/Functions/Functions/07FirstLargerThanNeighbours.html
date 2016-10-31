@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>07.First Larger Than Neighbours</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function neighboursCheck(position, array) {
+            if (array[position] > array[position - 1] && array[position] > array[position + 1]) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function firstBigger(array) {
+            for (var i = 1; i < array.length - 1; i++) {
+                if (neighboursCheck(i, array)) {
+                    return 'The index of first larger element is ' + i;
+                }
+            }
+
+            return -1;
+        }
+
+        var array = [1, 1, 3, 2, 2, 10];
+
+        jsConsole.writeLine(array);
+        jsConsole.writeLine(firstBigger(array));
+    </script>
+</body>
+</html>

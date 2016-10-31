@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>05.Appearance Count</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function numberOccurences(number, array) {
+            var count = 0;
+
+            for (var i = 0; i < array.length; i++) {
+                if (number === array[i]) {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        var array = [2, 2, 3, 4, 3, 2];
+        var number = 2;
+
+        jsConsole.write('The number ' + number + ' occures ');
+        jsConsole.write(numberOccurences(number, array));
+        jsConsole.writeLine(' times');
+
+        function testNumberOccurences(functionToTest) {
+            var array = [1, 2, 3, 4, 5, 3];
+            var number = 3;
+            var expected = 2;
+
+            if (functionToTest(number, array) == expected) {
+                jsConsole.writeLine('The function you are testing is working correctly');
+            }
+            else {
+                jsConsole.writeLine('The function you are testing is NOT working correctly');
+            }
+        }
+
+        testNumberOccurences(numberOccurences);
+    </script>
+</body>
+</html>
