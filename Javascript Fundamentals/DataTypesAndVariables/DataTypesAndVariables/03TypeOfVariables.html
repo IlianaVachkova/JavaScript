@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        var intLiteral = 5;
+        jsConsole.writeLine(typeof (intLiteral));
+
+        var floatLiteral = 1.78;
+        jsConsole.writeLine(typeof (floatLiteral));
+
+        var boolLiteral = true;
+        jsConsole.writeLine(typeof (boolLiteral));
+
+        var stringLiteral = 'string';
+        jsConsole.writeLine(typeof (stringLiteral));
+
+        var objectLiteral = { name: 'Penka', age: 45 };
+        jsConsole.writeLine(typeof (objectLiteral));
+
+        var arrayLiteral = [1, 2, 3];
+        jsConsole.writeLine(typeof (arrayLiteral));
+
+        var funcLiteral = function () { return; };
+        jsConsole.writeLine(typeof (funcLiteral));
+
+        var nullValueLiteral = null;
+        jsConsole.writeLine(typeof (nullValueLiteral));
+
+        var undefinedValueLiteral = undefined;
+        jsConsole.writeLine(typeof (undefinedValueLiteral));
+    </script>
+</body>
+</html>
