@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>01.Reverse String</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function reverseString(string) {
+            var result = string[0];
+            var length = string.length;
+
+            for (var i = 1; i < length; i++) {
+                result = string[i] + result;
+            }
+
+            jsConsole.writeLine(result);
+        }
+
+        var stringInput = 'samplesamplesamplesample';
+
+        reverseString(stringInput);
+    </script>
+</body>
+</html>

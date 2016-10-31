@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>11.String Format</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function stringFormat(format) {
+            var result = format;
+
+            var i,
+                len = arguments.length;
+            for (i = 0; i < len; i += 1) {
+                var match = new RegExp('{(' + i + ')}', 'g');
+                result = result.replace(match, arguments[i + 1]);
+            }
+
+            return result;
+        }
+
+        (function () {
+            jsConsole.writeLine(stringFormat("{0} {1} {2}", 4, 5, "Pesho"));
+
+            var format = "{0}, {1}, {0} text {2}";
+            var str = stringFormat(format, 1, "Pesho", "Gosho");
+
+            jsConsole.writeLine(str);
+        })();
+    </script>
+</body>
+</html>

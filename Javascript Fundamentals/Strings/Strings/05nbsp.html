@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>05.nbsp</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function whitespaceEscape(text) {
+            var i,
+                len = text.length;
+            for (i = 0; i < len; i += 1) {
+                if (text[i] === ' ') {
+                    text[i] = '&nbsp';
+                }
+            }
+
+            return text.htmlEscape();
+        }
+
+        (function () {
+            var text = ' So much work to do ';
+            jsConsole.writeLine(whitespaceEscape(text).htmlEscape());
+        })();
+    </script>
+</body>
+</html>

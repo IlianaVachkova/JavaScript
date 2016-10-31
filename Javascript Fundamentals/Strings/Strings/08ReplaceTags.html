@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>08.Replace Tags</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        String.prototype.replaceAt = function (index, character) {
+            return this.substr(0, index) + character + this.substr(index + character.length)
+        }
+
+        function aTagReplace(text) {
+            var result = text.replace(/<\/a>/g, '[/URL]');
+            result = result.replace(/<a href/g, '[URL');
+            var urlTagIndex = result.indexOf('[URL', 0);
+
+            while (urlTagIndex !== -1) {
+                var closeUrlTagIndex = result.indexOf('>', urlTagIndex);
+                result = result.replaceAt(closeUrlTagIndex, ']');
+                urlTagIndex = result.indexOf('[URL', closeUrlTagIndex + 1);
+            }
+
+            return result;
+        }
+
+        (function () {
+            var text = "<p>Please visit <a href=\"http://academy.telerik. com\">our site</a> to choose a training course. Also visit <a href=\"www.devbg.org\">our forum</a> to discuss the courses.</p>";
+            var result = aTagReplace(text);
+            jsConsole.writeLine(result.htmlEscape());
+        })();
+    </script>
+</body>
+</html>

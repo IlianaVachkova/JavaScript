@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>06.Extract Text From HTML</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function htmlParse(text) {
+            var result = [];
+            var inTag = false;
+
+            var i,
+                len = text.length;
+            for (i = 0; i < len; i += 1) {
+                if (inTag && text[i] !== '<') {
+                    result.push(text[i]);
+                }
+
+                if (text[i] === '>') {
+                    inTag = true;
+                }
+                else if (text[i] === '<') {
+                    inTag = false;
+                }
+            }
+
+            return result.join('');
+        }
+
+        (function () {
+            var htmlText = "<html><head><title>Sample site</title></head><body><div>text<div>more text</div>and more...</div>in body</body></html>";
+            var extracted = htmlParse(htmlText);
+
+            jsConsole.writeLine(extracted);
+        })();
+    </script>
+</body>
+</html>

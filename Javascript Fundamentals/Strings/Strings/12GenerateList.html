@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>12.Generate List</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <div data-type="template" id="list-item"><strong>-{name}-</strong> <span>-{age}-</span></div>
+    <script>
+        function generateList(people, template) {
+            var tmpl = template.split(' ');
+            var result = [];
+            result.push('<ul>');
+
+            var i,
+                lenPeople = people.length;
+            for (i = 0; i < lenPeople; i += 1) {
+                var j,
+                    lenTmpl = tmpl.length;
+                for (j = 0; j < lenTmpl; j += 1) {
+                    result.push('<li>');
+                    var replaced = tmpl[j].replace(/[-{}]/g, '');
+
+                    for (var prop in people[i]) {
+                        if (replaced.contains(prop)) {
+                            replaced = replaced.replace(prop, people[i][prop]);
+                        }
+                    }
+
+                    result.push(replaced);
+                }
+
+                result.push('</li>');
+            }
+
+            result.push('</ul>');
+
+            return result.join('');
+        }
+
+        (function () {
+            var people = [
+                { name: "Peter", age: 14 },
+                { name: "Ryan", age: 24 },
+                { name: "David", age: 19 },
+                { name: "Gary", age: 34 },
+                { name: "Teddy", age: 44 }];
+
+            var template = document.getElementById("list-item").innerHTML;
+            var peopleList = generateList(people, template);
+            jsConsole.writeLine(peopleList.htmlEscape());
+            jsConsole.writeLine(peopleList);
+        })();
+    </script>
+</body>
+</html>

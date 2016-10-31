@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Upcase Lowcase Mixcase Regions</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        String.prototype.toMixCase = function () {
+            var result = "";
+            for (var i = 0; i < this.length; i++) {
+                var num = parseInt(Math.random() * 10);
+
+                if (num > 5) {
+                    result += this[i].toLowerCase();
+                }
+                else {
+                    result += this[i].toUpperCase();
+                }
+            }
+
+            return result;
+        };
+
+        function extractText(tagCase, text) {
+            var result = [];
+
+            var startIndex = text.indexOf(tagCase);
+            if (startIndex == -1) {
+                result.push(text);
+            }
+            else {
+                result.push(text.substr(0, startIndex));
+                var endTag = tagCase.replace('<', '</');
+                var textTagIndex = startIndex + tagCase.length;
+                var endIndex = text.indexOf(endTag, textTagIndex);
+                var textIndex = endIndex + endTag.length;
+
+                while (true) {
+                    var textToPush = text.substr(textTagIndex, endIndex - textTagIndex);
+
+                    switch (tagCase) {
+                        case "<upcase>":
+                            textToPush = textToPush.toUpperCase();
+                            break;
+                        case "<mixcase>":
+                            textToPush = textToPush.toMixCase();
+                            break;
+                        case "<lowcase>":
+                            textToPush = textToPush.toLowerCase();
+                            break;
+                        default:
+                            throw new Error("Ivalid tag!");
+                            break;
+                    }
+
+                    result.push(textToPush);
+                    startIndex = text.indexOf(tagCase, textIndex);
+                    textTagIndex = startIndex + tagCase.length;
+
+                    if (startIndex == -1) {
+                        break;
+                    }
+                    else {
+                        result.push(text.substr(textIndex, startIndex - textIndex));
+                        endIndex = text.indexOf(endTag, textTagIndex);
+                        textIndex = endIndex + endTag.length;
+                    }
+                }
+
+                result.push(text.substr(textIndex));
+            }
+
+            return result.join("");
+        }
+
+        function ExtraxtAllText(text) {
+            var result = extractText("<upcase>", text);
+            result = extractText("<lowcase>", result);
+            result = extractText("<mixcase>", result);
+
+            return result;
+        }
+
+        (function () {
+            var text = "We are <mixcase>living</mixcase> in an <upcase>yellow submarine</upcase>. We <mixcase>don't</mixcase> have <lowcase>ANYTHING</lowcase> else.";
+            jsConsole.writeLine("Original text: " + text.htmlEscape() + "<br />");
+            var formattedText = ExtraxtAllText(text);
+            jsConsole.writeLine("Formatted text: " + formattedText);
+        })();
+    </script>
+</body>
+</html>

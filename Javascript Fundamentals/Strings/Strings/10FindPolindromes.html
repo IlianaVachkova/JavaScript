@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>10.Find Polindromes</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function extractPolindromes(text) {
+            var result = [];
+            var splitted = text.split(' ');
+
+            var i,
+                lenSplitted = splitted.length;
+            for (i = 0; i < lenSplitted; i += 1) {
+                var trimmed = splitted[i].replace(/[,.-]$/, '');
+                var isSymetric = true;
+
+                var j,
+                    lenTrimmed = trimmed.length;
+                for (j = 0; j < lenTrimmed; j += 1) {
+                    if (trimmed[j] !== trimmed[lenTrimmed - j - 1]) {
+                        isSymetric = false;
+                        break;
+                    }
+                }
+
+                if (isSymetric) {
+                    result.push(trimmed);
+                }
+            }
+
+            return result.join('<br />');
+        }
+
+        (function () {
+            var text = "alabala, ABBA data. goes by do exe php lamel lamal pascal csharp phpfog";
+            var result = extractPolindromes(text);
+            jsConsole.writeLine(result);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>07.Parse URL</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function urlParse(url) {
+            var result = [];
+
+            var protocol = url.substr(0, url.indexOf(':', 0));
+            result.push('Protocol: ' + protocol + '<br />')
+
+            var pLen = protocol.length;
+            var server = url.substr(pLen + 3, url.indexOf('/', pLen + 3) - (pLen + 3));
+            result.push('Server: ' + server + '<br />');
+
+            var sLen = server.length;
+            var resource = url.substr(url.indexOf(server, 0) + sLen);
+            result.push('Resource: ' + resource);
+
+            return result.join('');
+        }
+
+        (function () {
+            var url = 'http://www.devbg.org/forum/index.php';
+            var result = urlParse(url);
+            jsConsole.writeLine(result);
+        })();
+    </script>
+</body>
+</html>
