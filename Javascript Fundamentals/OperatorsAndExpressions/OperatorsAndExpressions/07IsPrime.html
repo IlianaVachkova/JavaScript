@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        var number = 4;
+        var prime = true;
+
+        if (number > 1) {
+            for (var i = 2; i < number; i++) {
+                if (number % i === 0) {
+                    prime = false;
+                }
+            }
+            jsConsole.writeLine('Prime? -> ' + prime);
+        }
+        else {
+            jsConsole.writeLine('Prime? -> ' + !prime);
+        }
+    </script>
+</body>
+</html>

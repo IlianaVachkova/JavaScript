@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        var x = 2;
+        var y = 0;
+        var radius = 2;
+        var inCircle = true;
+        var outRectangle = true;
+
+        if (Math.sqrt(((x - 1) * (x - 1)) + ((y - 1) * (y - 1))) < radius) {
+
+            inCircle = true;
+        }
+        else {
+            inCircle = false;
+        }
+
+        if (((-1 > x) || (x > 5)) || ((-1 > y) || (y > 1))) {
+            outRectangle = true;
+        }
+        else {
+            outRectangle = false;
+        }
+
+        if (inCircle && outRectangle) {
+            jsConsole.writeLine('inside K & outside of R? -> yes');
+        }
+        else {
+            jsConsole.writeLine('inside K & outside of R? -> no');
+        }
+    </script>
+</body>
+</html>

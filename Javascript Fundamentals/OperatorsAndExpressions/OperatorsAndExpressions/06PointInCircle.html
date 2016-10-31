@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        var x = 0;
+        var y = 6;
+        var radius = 5;
+        var inside = true;
+
+        if (Math.sqrt(((x - 0) * (x - 0)) + ((y - 0) * (y - 0))) <= radius) {
+            jsConsole.writeLine("Is the point inside? -> " + inside);
+        }
+        else {
+            jsConsole.writeLine("Is the point inside? -> " + !inside);
+        }
+    </script>
+</body>
+</html>
