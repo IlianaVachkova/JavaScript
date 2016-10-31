@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>06.Quadratic Equation</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        var a = 5;
+        var b = 2;
+        var c = 8;
+        var descriminant = (b * b - 4 * a * c);
+        var x1, x2;
+
+        if (descriminant > 0) {
+            x1 = (-b - Math.sqrt(descriminant)) / (2 * a);
+            x2 = (-b + Math.sqrt(descriminant)) / (2 * a);
+            jsConsole.writeLine('The roots are: x1=' + x1 + ' x2=' + x2);
+        }
+        else if (descriminant < 0) {
+            jsConsole.writeLine('No real roots!');
+        }
+        else if (descriminant === 0) {
+            x1 = -b / (2 * a);
+            jsConsole.writeLine('There is only one root: x1=x2=' + x1);
+        }
+    </script>
+</body>
+</html>

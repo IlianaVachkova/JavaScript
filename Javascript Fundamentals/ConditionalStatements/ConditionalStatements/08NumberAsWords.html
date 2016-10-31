@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>08.Number As Word</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <style>
+        #first {
+            font-family: Consolas;
+            border: 1px solid black;
+            padding: 5px 15px;
+            margin-bottom: 5px;
+        }
+
+        a {
+            font-family: sans-serif;
+            text-transform: uppercase;
+            color: black;
+            background: #d0d0d0;
+            border: 1px solid black;
+            padding: 5px 15px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 15px 0;
+        }
+
+            a:hover {
+                background: #EEE;
+            }
+    </style>
+</head>
+<body>
+    <label for="number">Enter number: </label>
+    <input type="text" id="number" />
+    <br />
+    <a href="#" onclick="OnBtnClick()">Check result:</a>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function OnBtnClick() {
+            var number = jsConsole.readInteger("#number");
+
+            var ones = parseInt(number % 10);
+            var tens = parseInt((number / 10) % 10);
+            var hundreds = parseInt(number / 100);
+            var twoDigitNum = parseInt(number % 100);
+
+            if (number < 0 || number > 999) {
+                jsConsole.writeLine("Invalid number");
+                return;
+            }
+
+            switch (number) {
+                case 0: jsConsole.write("Zero"); break;
+                case 1: jsConsole.write("One"); break;
+                case 2: jsConsole.write("Two"); break;
+                case 3: jsConsole.write("Three"); break;
+                case 4: jsConsole.write("Four"); break;
+                case 5: jsConsole.write("Five"); break;
+                case 6: jsConsole.write("Six"); break;
+                case 7: jsConsole.write("Seven"); break;
+                case 8: jsConsole.write("Eight"); break;
+                case 9: jsConsole.write("Nine"); break;
+                case 10: jsConsole.write("Ten"); break;
+                case 11: jsConsole.write("Eleven"); break;
+                case 12: jsConsole.write("Twelve"); break;
+                case 13: jsConsole.write("Thirteen"); break;
+                case 14: jsConsole.write("Fourteen"); break;
+                case 15: jsConsole.write("Fifteen"); break;
+                case 16: jsConsole.write("Sixteen"); break;
+                case 17: jsConsole.write("Seventeen"); break;
+                case 18: jsConsole.write("Eightteen"); break;
+                case 19: jsConsole.write("Nineteen"); break;
+            }
+
+            switch (hundreds) {
+                case 1: jsConsole.write("One hundred "); break;
+                case 2: jsConsole.write("Two hundred "); break;
+                case 3: jsConsole.write("Three hundred "); break;
+                case 4: jsConsole.write("Four hundred "); break;
+                case 5: jsConsole.write("Five hundred "); break;
+                case 6: jsConsole.write("Six hundred "); break;
+                case 7: jsConsole.write("Seven hundred "); break;
+                case 8: jsConsole.write("Eight hundred "); break;
+                case 9: jsConsole.write("Nine hundred "); break;
+            }
+
+            if (hundreds > 0 && (ones === 0 || tens < 2)) {
+                if (ones === 0 && tens === 0) {
+                    jsConsole.write("");
+                }
+                else {
+                    jsConsole.write("and ");
+                    switch (twoDigitNum) {
+                        case 1: jsConsole.write("one"); break;
+                        case 2: jsConsole.write("two"); break;
+                        case 3: jsConsole.write("three"); break;
+                        case 4: jsConsole.write("four"); break;
+                        case 5: jsConsole.write("five"); break;
+                        case 6: jsConsole.write("six"); break;
+                        case 7: jsConsole.write("seven"); break;
+                        case 8: jsConsole.write("eight"); break;
+                        case 9: jsConsole.write("nine"); break;
+                        case 10: jsConsole.write("ten"); break;
+                        case 11: jsConsole.write("eleven"); break;
+                        case 12: jsConsole.write("twelve"); break;
+                        case 13: jsConsole.write("thirteen"); break;
+                        case 14: jsConsole.write("fourteen"); break;
+                        case 15: jsConsole.write("fifteen"); break;
+                        case 16: jsConsole.write("sixteen"); break;
+                        case 17: jsConsole.write("seventeen"); break;
+                        case 18: jsConsole.write("eightteen"); break;
+                        case 19: jsConsole.write("nineteen"); break;
+                    }
+
+                    switch (tens) {
+                        case 2: jsConsole.write("twenty "); break;
+                        case 3: jsConsole.write("thirty "); break;
+                        case 4: jsConsole.write("fourty "); break;
+                        case 5: jsConsole.write("fifty "); break;
+                        case 6: jsConsole.write("sixty "); break;
+                        case 7: jsConsole.write("seventy "); break;
+                        case 8: jsConsole.write("eighty "); break;
+                        case 9: jsConsole.write("ninety "); break;
+                    }
+                }
+            }
+
+            if (hundreds === 0) {
+                switch (tens) {
+                    case 2: jsConsole.write("Twenty "); break;
+                    case 3: jsConsole.write("Thirty "); break;
+                    case 4: jsConsole.write("Fourty "); break;
+                    case 5: jsConsole.write("Fifty "); break;
+                    case 6: jsConsole.write("Sixty "); break;
+                    case 7: jsConsole.write("Seventy "); break;
+                    case 8: jsConsole.write("Eighty "); break;
+                    case 9: jsConsole.write("Ninety "); break;
+                }
+            }
+
+            if (hundreds > 0 && tens !== 0 && ones !== 0) {
+                switch (tens) {
+                    case 2: jsConsole.write("twenty "); break;
+                    case 3: jsConsole.write("thirty "); break;
+                    case 4: jsConsole.write("fourty "); break;
+                    case 5: jsConsole.write("fifty "); break;
+                    case 6: jsConsole.write("sixty "); break;
+                    case 7: jsConsole.write("seventy "); break;
+                    case 8: jsConsole.write("eighty "); break;
+                    case 9: jsConsole.write("ninety "); break;
+                }
+            }
+
+            if (hundreds >= 0 && tens > 0 && twoDigitNum > 19) {
+                switch (ones) {
+                    case 1: jsConsole.write("one"); break;
+                    case 2: jsConsole.write("two"); break;
+                    case 3: jsConsole.write("three"); break;
+                    case 4: jsConsole.write("four"); break;
+                    case 5: jsConsole.write("five"); break;
+                    case 6: jsConsole.write("six"); break;
+                    case 7: jsConsole.write("seven"); break;
+                    case 8: jsConsole.write("eight"); break;
+                    case 9: jsConsole.write("nine"); break;
+                }
+            }
+
+            jsConsole.write("<br />");
+        }
+    </script>
+</body>
+</html>

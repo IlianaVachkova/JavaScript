@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>04.Sort 3 Numbers</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        var a = 3;
+        var b = 7;
+        var c = 9;
+
+        if ((a === b) && (b === c) && (a === c)) {
+            jsConsole.writeLine('The numbers are equal: ' + c + ' ' + a + ' ' + b);
+        }
+        else if ((a >= b) && (a >= c)) {
+            if (b >= c) {
+                jsConsole.writeLine('The numbers in descending order are: ' + a + ' ' + b + ' ' + c);
+            }
+            else {
+                jsConsole.writeLine('The numbers in descending order are: ' + a + ' ' + c + ' ' + b);
+            }
+        }
+        else if ((b >= a) && (b >= c)) {
+            if (a >= c) {
+                jsConsole.writeLine('The numbers in descending order are: ' + b + ' ' + a + ' ' + c);
+            }
+            else {
+                jsConsole.writeLine('The numbers in descending order are: ' + b + ' ' + c + ' ' + a);
+            }
+        }
+        else if ((c >= a) && (c >= b)) {
+            if (a >= b) {
+                jsConsole.writeLine('The numbers in descending order are: ' + c + ' ' + a + ' ' + b);
+            }
+            else {
+                jsConsole.writeLine('The numbers in descending order are: ' + c + ' ' + b + ' ' + a);
+            }
+        }
+    </script>
+</body>
+</html>
