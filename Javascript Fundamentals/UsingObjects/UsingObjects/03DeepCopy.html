@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>03.Deep Copy</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function deepCopy(object) {
+            var type = typeof (object);
+            var result;
+
+            switch (type) {
+                case 'string':
+                case 'number':
+                case 'boolean':
+                case 'undefined':
+                case 'null':
+                    result = object;
+                    break;
+                default:
+                    {
+                        result = {};
+                        for (var i in object) {
+                            result[i] = object[i];
+                        }
+                        break;
+                    }
+            }
+            return result;
+        }
+
+        var person = {
+            fname: 'Pesho',
+            lname: 'Peshov',
+            phone: 8888888888888,
+            toString: function () {
+                return this.fname + ' ' + this.lname + ' ' + this.phone;
+            }
+        };
+
+        jsConsole.writeLine('Original: ' + person);
+
+        var copy = deepCopy(person);
+
+        person.fname = 'Gosho';
+        jsConsole.writeLine('Copy: ' + copy);
+        jsConsole.writeLine('Changed ' + person + '<br />');
+
+        var arr = [1, 2, 3, 4, "Pesho", true, false];
+        jsConsole.writeLine('Original: ' + arr);
+
+        var newArr = deepCopy(arr);
+
+        jsConsole.write('Copy: ');
+
+        for (var i in newArr) {
+            jsConsole.write(newArr[i] + ',');
+        }
+
+        jsConsole.writeLine();
+
+        arr[4] = 'Gosho';
+        jsConsole.writeLine('Changed: ' + arr);
+    </script>
+</body>
+</html>

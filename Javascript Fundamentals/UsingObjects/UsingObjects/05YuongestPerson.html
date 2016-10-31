@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>05.Yuongest Person</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function person(firstname, lastname, age) {
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.age = age;
+            this.toString = function () {
+                return this.firstname + ' ' + this.lastname + ' ' + this.age;
+            }
+        }
+
+        function findYoungest(persons) {
+            var youngest = new person('', '', 200);
+
+            for (var i = 0; i < persons.length; i += 1) {
+                if (persons[i].age < youngest.age) {
+                    youngest.firstname = persons[i].firstname;
+                    youngest.lastname = persons[i].lastname;
+                    youngest.age = persons[i].age;
+                }
+            }
+
+            return youngest;
+        }
+
+        var persons = [
+            new person('Gosho', 'Petrov', 82),
+            new person('Ivan', 'Ivanov', 78),
+            new person('Elka', 'Smetalkova', 54)];
+
+        jsConsole.writeLine(findYoungest(persons));
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>04.Has Property</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function hasProperty(object, property) {
+            for (var prop in obj) {
+                if (prop === property) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        var obj = { length: 5, count: 6 };
+
+        if (Object.prototype.toString.call(obj) === '[object Array]') {
+            var hasProp = obj.hasOwnProperty('length');
+            jsConsole.writeLine(hasProp);
+        }
+        else {
+            var hasProp = hasProperty(obj, 'length');
+            jsConsole.writeLine(hasProp);
+        }
+    </script>
+</body>
+</html>

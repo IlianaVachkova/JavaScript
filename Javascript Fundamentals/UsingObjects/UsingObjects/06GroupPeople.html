@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Groups</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function person(firstname, lastname, age) {
+            this.fname = firstname;
+            this.lname = lastname;
+            this.age = age;
+            this.toString = function () {
+                return (this.fname + " " + this.lname + " " + this.age);
+            }
+        }
+
+        function group(persons, prop) {
+            var grouped = [];
+            var visited = [];
+            var result = {};
+
+            switch (prop) {
+                case "fname":
+                    result = { FirstName: grouped };
+                    break;
+                case "lname":
+                    result = { LastName: grouped };
+                    break;
+                case "age":
+                    result = { Age: grouped };
+                    break;
+            }
+
+
+            for (var i = 0; i < persons.length; i++) {
+                visited[i] = false;
+            }
+
+            for (var i = 0; i < persons.length - 1; i++) {
+                if (!visited[i]) {
+                    visited[i] = true;
+                    grouped.push(persons[i]);
+                }
+
+                for (var j = i + 1; j < persons.length; j++) {
+
+                    if (!visited[j] && persons[i][prop] == persons[j][prop]) {
+                        grouped.push(persons[j]);
+                        visited[j] = true;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        var persons = [
+            new person("Gosho", "Petrov", 82),
+            new person("Gosho", "Sifonq", 35),
+            new person("Bay", "Petrov", 82),
+            new person("Mitio", "Pishtova", 35),
+            new person("Mitio", "Sifonq", 21),
+            new person("Bay", "Sifonq", 35),
+            new person("Bay", "Pishtova", 21)];
+
+        function printGroup(group) {
+            for (var i in group) {
+                jsConsole.writeLine(i);
+                jsConsole.writeLine(group[i]);
+            }
+
+            jsConsole.writeLine(' ');
+        }
+
+        var groupedByFname = group(persons, "fname");
+        var groupedByLname = group(persons, "lname");
+        var groupedByAge = group(persons, "age");
+
+        printGroup(groupedByAge);
+        printGroup(groupedByFname);
+        printGroup(groupedByLname);
+    </script>
+</body>
+</html>
