@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>04.Lexicographically Smallest</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        var min = '0';
+        var max = 'a';
+
+        for (var prop in document) {
+            if (prop.toLowerCase() < min.toLowerCase()) {
+                min = prop;
+            }
+            if (prop.toLowerCase() > max.toLowerCase()) {
+                max = prop;
+            }
+        }
+
+        jsConsole.writeLine('Min in documnet is: ' + min);
+        jsConsole.writeLine('Max in document is: ' + max);
+        jsConsole.writeLine(' ');
+
+        var min = 'z';
+        var max = 'a';
+        for (var prop in window) {
+            if (prop.toLowerCase() < min.toLowerCase()) {
+                min = prop;
+            }
+            if (prop.toLowerCase() > max.toLowerCase()) {
+                max = prop;
+            }
+        }
+
+        jsConsole.writeLine('Min in window is: ' + min);
+        jsConsole.writeLine('Max in window is: ' + max);
+        jsConsole.writeLine(' ');
+
+        var min = 'z';
+        var max = 'a';
+        for (var prop in navigator) {
+            if (prop.toLowerCase() < min.toLowerCase()) {
+                min = prop;
+            }
+
+            if (prop.toLowerCase() > max.toLowerCase()) {
+                max = prop;
+            }
+        }
+
+        jsConsole.writeLine('Min in navigator is: ' + min);
+        jsConsole.writeLine('Max in navigator is: ' + max);
+        jsConsole.writeLine(' ');
+    </script>
+</body>
+</html>
