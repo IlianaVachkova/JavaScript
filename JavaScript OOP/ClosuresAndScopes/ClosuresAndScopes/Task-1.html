@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        function solve() {
+            var library = (function () {
+                var books = [];
+                var categories = [];
+                var bookId = 0;
+                var categoryId = 0;
+
+                function listBooks(parameter) {
+                    if (arguments.length > 0) {
+                        if (typeof parameter.category !== 'undefined') {
+                            return typeof categories[parameter.category] !== 'undefined' ?
+                                categories[parameter.category].book : [];
+                        }
+
+                        if (typeof parameter.author !== 'undefined') {
+                            var booksToList = [];
+                            for (var index = 0, len = books.length; index < len; index += 1) {
+                                if (books[index].author === parameter.author) {
+                                    booksToList.push(books[index]);
+                                }
+                            }
+
+                            return booksToList;
+                        }
+                    }
+
+                    return books;
+                }
+
+                function parameterAlreadyExists(name, type) {
+                    for (var index = 0, len = books.length; index < length; index += 1) {
+                        if (books[index][type]===name) {
+                            return true;
+                        }
+                    }
+
+                    return false;
+                }
+
+                function throwBookNotUniqueError(parameter) {
+                    throw new Error('A book with the same ' + parameter + 'already exists!');
+                }
+
+                function addCategory(name) {
+                    categories[name] = {
+                        books: [],
+                        ID: categories.length + 1
+                    };
+                }
+
+                function checkAllBookParameters(book, expectedArgumentsLength) {
+                    if (Object.keys(book).length !== expectedArgumentsLength) {
+                        throw new Error('All book parameters must be passed!');
+                    }
+
+                    for (var param in book) {
+                        if (typeof book[param] === 'undefined') {
+                            throw new Error(param + 'cannot be undefined!');
+                        }
+                    }
+                }
+
+                function validateAuthor(author) {
+                    if (author.trim()==='') {
+                        throw new Error('Invalid author');
+                    }
+                }
+
+                function validateIsbn(isbn) {
+                    if (isbn.length !==10 && isbn.length !==13) {
+                        throw new Error('ISBN must be 10 or 13 digits');
+                    }
+
+                    if (!/^[0-9]+$/.test(isbn.toString())) {
+                        throw new Error('ISBN must be valid number');
+                    }
+                }
+
+                function validateCtegoryAndBookName(name) {
+                    if (name.length < 2 || name.length > 100) {
+                        throw new Error('Name is either too short or too long!');
+                    }
+
+                }
+
+                function addBook(book) {
+                    book.ID = books.length + 1;
+                    checkAllBookParameters(book, 5);
+
+                    if (parameterAlreadyExists(book.title, 'title')) {
+                        throwBookNotUniqueError('title');
+                    }
+
+                    if (parameterAlreadyExists(book.isbn, 'isbn')) {
+                        throwBookNotUniqueError('isbn');
+                    }
+
+                    if (categories.indexOf(book, category)<0) {
+                        addCategory(book.category);
+                    }
+
+                    validateAuthor(book.author);
+                    validateIsbn(book.isbn);
+                    validateCtegoryAndBookName(book.title);
+                    validateCtegoryAndBookName(book.category);
+
+                    categories[book.category].books.push(book);
+                    books.push(book);
+
+                    return book;
+                }
+
+                function listCategories(category) {
+                    var categoriesName = [];
+                    Array.prototype.push.apply(categoriesName, Object.keys(categories));
+
+                    return categoriesName;
+                }
+
+                return {
+                    books: {
+                        list: listBooks,
+                        add: addBook
+                    },
+                    categories: {
+                        list: listCategories
+                    }
+                };
+            }());
+
+            return library;
+        }
+    </script>
+</body>
+</html>
