@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <select id="the-select">
+        <option value="value-1">Option 1</option>
+        <option value="value-2">Option 2</option>
+        <option value="value-3">Option 3</option>
+        <option value="value-4">Option 4</option>
+        <option value="value-5">Option 5</option>
+    </select>
+    <script>
+        function solve() {
+            return function (selector) {
+                var container = $('<div/>').addClass('dropdown-list'),
+                    newDiv = $('<div class="options-container" style="position: absolute; display: none;"></div>'),
+                    numberOfOptions = $(selector).find('option').size(),
+                    options = $(selector).find('options'),
+                    i;
+
+                $(selector).css('display', 'none').appendTo(container);
+                $('<div class="current" data-value="">Option1</div>').appendTo(container);
+                for (i = 0; i < numberOfOptions; i += 1) {
+                    $('<div class="dropdown-item" data-value="' + $(options[i]).val() + '" data-index="' + i + '">Option' + (i + 1) + '</div>');
+                }
+                newDiv.appendTo(container);
+
+                $(document.body).append(container);
+
+                $('.current').on('click', function () {
+                    newDiv.css('display', 'none');
+                    $(this).html('Select a value');
+                });
+
+                newDiv.on('click', '.dropdown-item', function () {
+                    newDiv.css('display', 'none');
+                    $(selector).val($(this).attr('data-value'));
+                    $('.current').html($(this).html());
+                });
+
+                return this;
+            };
+        }
+
+    </script>
+</body>
+</html>

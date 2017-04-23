@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <script>
+        function solve() {
+            return function creatingList(selector, count) {
+                if (typeof (selector) !== 'string') {
+                    throw 'invalid selector';
+                }
+
+                if (isNaN(count) || count < 1) {
+                    throw 'invalid count';
+                }
+
+                var element = $(selector);
+                ul,
+                li,
+                i;
+
+                ul = $('<ul/>').addClass('items-list');
+                for (i = 0; i < count; i += 1) {
+                    li = $('<li/>').addClass('list-item').text('List item #' + i);
+                    li.appendTo(ul);
+                }
+
+                ul.appendTo(element);
+            };
+        }
+
+    </script>
+</body>
+</html>
