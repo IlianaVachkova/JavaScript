@@ -1,0 +1,22 @@
+{
+  "name": "research-simple-forum",
+  "version": "1.0.0",
+  "description": "##  Description - You are given a partially implemented forum system.   - It supports `Threads` that have `title`, `creator`   - Each `Thread` has `Messages`   - `Messages` have `content`, `author`   - It supports a Gallery of images that come from Reddit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Doncho Minkov (DonchoMinkov@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "handlebars": "^4.0.5",
+    "navigo": "^3.0.0",
+    "system": "^1.0.6",
+    "systemjs": "^0.19.39",
+    "systemjs-plugin-babel": "0.0.15"
+  },
+  "devDependencies": {}
+}
